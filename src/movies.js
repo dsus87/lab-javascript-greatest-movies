@@ -1,6 +1,3 @@
-
-
-
 // Iteration 1: All directors? - Get the array of all directors.
 
 function getAllDirectors(movies) {
@@ -73,25 +70,11 @@ console.log("scores average",scoresAverage(movies))
 // Iteration 4: Drama movies - Get the average of Drama Movies
 
 function dramaMoviesScore(movies) {
-//   if (movies.length===0){
-//     return 0
-// }
+
   const dramaArray = movies.filter(drama => drama.genre.includes('Drama')) 
 
   console.log("drama scores average",scoresAverage(dramaArray))
 }
-
-
-
-//console.log(dramaMoviesScore(movies))
-
-
-
-
-
-// reuse function 
-
-// pass as argument to course avg the new array you created 
 
 
 
@@ -104,11 +87,11 @@ function orderByYear(movies) {
       return a.year - b.year;  // if a-b is >0 sort b before a IF <0 sort a before b
     } else {   //
         if (a.title < b.title) {
-      return -1;
+      return -1;   // -1 indicates that a should come before b 
       } else if (a.title >b.title){
-        return 1;
+        return 1; // 1  indicates that a should come after b
       } else {
-        return 0
+        return 0 // no change
       }
       }
     }) 
@@ -116,60 +99,28 @@ function orderByYear(movies) {
     return moviesByYear
   }
 
-
-
-console.log (orderByYear(movies))
-
-
-
-
-
-// function getAllDirectors(movies) {
-//   const onlyDirectors = movies.map (movies1 => {
-//     return {
-//      director: movies1.director,
-//     }
-//   }
-//     )
-//   return onlyDirectors
-// } 
-
-// console.log('Get all directors', getAllDirectors(movies))
-
-
-
-
-
-
-
-
-
-//numbers.sort((a, b) => a - b);
-
-// const onlyDirectors = movies.map (movies1 => {
-//   return {
-//    director: movies1.director,
-//   }
-// }
-//   )
-// return onlyDirectors
-
-
-//console.log('Get all directors', getAllDirectors(movies))
-
-
-//sort from oldest to newest
-//filter for year  same code in 3 and 4
-// create newarray, its an integer
-// movies.year 
-//numbers.sort((a, b) => a - b);
-
-
-
+//console.log ('order by year', orderByYear(movies))
 
 
 // Iteration 6: Alphabetic Order - Order by title and print the first 20 titles
-function orderAlphabetically(moviesArray) {}
+function orderAlphabetically(movies){
+  const moviesByTitle = [...movies];
+
+  moviesByTitle.sort ((a,b) => {
+    if (a.title < b.title) {
+      return -1;   // -1 indicates that a should come before b 
+      } else if (a.title >b.title){
+        return 1; // 1  indicates that a should come after b
+      } else {
+        return 0 // no change
+      }
+  
+    })
+  return moviesByTitle.slice(0,20)
+}
+
+console.log ('Order Alphabetically', orderAlphabetically(movies))
+
 
 // BONUS - Iteration 7: Time Format - Turn duration of the movies from hours to minutes
 function turnHoursToMinutes(moviesArray) {}
